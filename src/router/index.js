@@ -1,14 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+import UserList from '../views/UserList.vue'
+import ChatBoard from '../views/ChatBoard.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'UserList',
+    component: UserList
+  },
+  {
+    path: '/chat',
+    name: 'ChatBoard',
+    component: ChatBoard
   },
   {
     path: '/about',
