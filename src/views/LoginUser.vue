@@ -11,13 +11,6 @@
           v-model="valid"
           lazy-validation
         >
-          <v-text-field
-            v-model="name"
-            :counter="10"
-            :rules="nameRules"
-            label="Name"
-            required
-          ></v-text-field>
 
           <v-text-field
             v-model="email"
@@ -26,43 +19,25 @@
             required
           ></v-text-field>
 
-          <v-select
-            v-model="select"
-            :items="items"
-            :rules="[v => !!v || 'Item is required']"
-            label="Item"
-            required
-          ></v-select>
-
-          <v-checkbox
-            v-model="checkbox"
-            :rules="[v => !!v || 'You must agree to continue!']"
-            label="Do you agree?"
-            required
-          ></v-checkbox>
+          <v-text-field
+            v-model="password"
+            type="password"
+            label="Password"
+          ></v-text-field>
 
           <v-btn
             :disabled="!valid"
             color="success"
-            class="mr-4"
+            class="login-btn"
             @click="validate"
           >
-            Validate
+            LOGIN
           </v-btn>
 
-          <v-btn
-            color="error"
-            class="mr-4"
-            @click="reset"
-          >
-            Reset Form
-          </v-btn>
 
           <v-btn
-            color="warning"
-            @click="resetValidation"
           >
-            Reset Validation
+           CLEAR
           </v-btn>
         </v-form>
       </v-card>
@@ -84,14 +59,11 @@
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
-      checkbox: false,
+      password: '',
+      // emailRules: [
+      //   v => !!v || 'E-mail is required',
+      //   v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      // ],
     }),
     methods: {
       validate () {
@@ -119,6 +91,9 @@
 }
 .login-title{
   display: inline-block;
+}
+.login-btn{
+  margin-right:20px;
 }
 
 </style>
