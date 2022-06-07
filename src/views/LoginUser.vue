@@ -4,7 +4,7 @@
     <div class="login-box" >
       <v-card class="login-form">
         <v-card-title class="login-title">Login</v-card-title>
-        <v-card-subtitle>ログインしてください。</v-card-subtitle>
+        <v-card-subtitle>ユーザー情報を入力してください。</v-card-subtitle>
 
         <v-form
           ref="form"
@@ -26,7 +26,7 @@
           ></v-text-field>
 
           <v-btn
-            :disabled="!valid"
+            :disabled="isValid"
             color="success"
             class="login-btn"
             @click="validate"
@@ -39,6 +39,8 @@
           >
            CLEAR
           </v-btn>
+
+          {{valid }}
         </v-form>
       </v-card>
     </div>
@@ -49,15 +51,10 @@
   export default {
     data: () => ({
       valid: true,
-      name: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-      ],
       email: '',
       emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        v => !!v || 'メールアドレスを入力してください',
+        v => /.+@.+\..+/.test(v) || 'メールアドレスが不正です。',
       ],
       password: '',
       // emailRules: [
@@ -65,6 +62,11 @@
       //   v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       // ],
     }),
+    computed:{
+      isVaild(){
+        return !this.valid;
+      }
+    },
     methods: {
       validate () {
         this.$refs.form.validate()
