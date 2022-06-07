@@ -3,15 +3,23 @@
   <v-app>
     <div class="login-box" >
       <v-card class="login-form">
-        <v-card-title class="login-title">Login</v-card-title>
+        <v-card-title class="login-title">SignUp
+        </v-card-title>
         <v-card-subtitle>ユーザー情報を入力してください。</v-card-subtitle>
-        <v-btn text color="light-blue" to="signup"> 新規登録はこちら</v-btn>
+        <v-btn text color="light-blue" to="login"> ログインはこちら</v-btn>
 
         <v-form
           ref="form"
           v-model="valid"
           lazy-validation
         >
+
+          <v-text-field
+            v-model="name"
+            :rules="nameRules"
+            label="UserName"
+            required
+          ></v-text-field>
 
           <v-text-field
             v-model="email"
@@ -32,7 +40,7 @@
             class="login-btn"
             @click="validate"
           >
-            LOGIN
+            SIGN UP
           </v-btn>
 
 
@@ -50,6 +58,11 @@
   export default {
     data: () => ({
       valid: true,
+      name: '',
+      nameRules: [
+        v => !!v || '名前を入力してください',
+        v => (v && v.length <= 10) || '名前は10文字以内で入力してください',
+      ],
       email: '',
       emailRules: [
         v => !!v || 'メールアドレスを入力してください',
