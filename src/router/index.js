@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 import UserList from '../views/UserList.vue'
 import ChatBoard from '../views/ChatBoard.vue'
+import LoginUser from '../views/LoginUser.vue'
+import SignUp from '../views/SignUp.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +18,16 @@ const routes = [
     path: '/chat',
     name: 'ChatBoard',
     component: ChatBoard
+  },
+  {
+    path: '/login',
+    name: 'LoginUser',
+    component: LoginUser
+  },
+  {
+    path: '/Signup',
+    name: 'SignUp',
+    component: SignUp
   },
   {
     path: '/about',
