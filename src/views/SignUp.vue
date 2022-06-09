@@ -55,9 +55,11 @@
 </template>
 
 <script>
+import firebase from"@/firebase/firebase";
+
   export default {
     data: () => ({
-      valid: true,
+      valid: false,
       name: '',
       nameRules: [
         v => !!v || '名前を入力してください',
@@ -69,13 +71,10 @@
         v => /.+@.+\..+/.test(v) || 'メールアドレスが不正です。',
       ],
       password: '',
-      // emailRules: [
-      //   v => !!v || 'E-mail is required',
-      //   v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      // ],
     }),
     computed:{
       isVaild(){
+        console.log(this.valid);
         return !this.valid;
       }
     },
@@ -89,7 +88,18 @@
       resetValidation () {
         this.$refs.form.resetValidation()
       },
-    },
+      submit () {
+        // firebase.auth()
+        // .createUserWithEmailAndPassword(this.email, this.password)
+        console.log(firebase.auth());
+        // .then((result) => {
+        //   console.log("success",result);
+        // })
+        // .chach((error)=>{
+        //   console.log("error",error);
+        // })
+      }  
+    }
   }
 </script>
 

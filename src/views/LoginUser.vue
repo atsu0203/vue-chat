@@ -30,11 +30,10 @@
             :disabled="isValid"
             color="success"
             class="login-btn"
-            @click="validate"
           >
             LOGIN
           </v-btn>
-
+{{valid}}
 
           <v-btn
           >
@@ -63,6 +62,7 @@
     }),
     computed:{
       isVaild(){
+        console.log(this.valid);
         return !this.valid;
       }
     },
